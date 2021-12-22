@@ -55,6 +55,25 @@ void print(){
     }
 }
 
+void reverse(){
+    struct Node* ch=head;
+    struct Node* t=ch->next;
+   
+    while(ch->next!=NULL){
+        t=ch->next;
+        ch->next=ch->prev;
+        ch->prev=t;
+        ch=t;
+        
+    }
+    
+    head=ch;
+      t=ch->next;
+        ch->next=ch->prev;
+        ch->prev=t;
+    
+}
+
 void printReverse(){
     struct Node* t=head;
     while(t->next!=NULL){
@@ -72,7 +91,9 @@ int main(){
     insertAtN(1,1);
     insertAtN(2,2);
     insertAtN(3,3);
-    printReverse();
+    //printReverse();
+    reverse();
+    print();
 
 }
 
