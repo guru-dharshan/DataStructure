@@ -73,6 +73,27 @@ void reverse(){
         ch->prev=t;
     
 }
+void reverserecursion(struct Node* c){
+     struct Node* ch=c;
+     struct Node* t=ch->next;
+    if(c->next==NULL){
+         head=ch;
+      t=ch->next;
+        ch->next=ch->prev;
+        ch->prev=t;
+        return;
+    }
+   
+        t=ch->next;
+        ch->next=ch->prev;
+        ch->prev=t;
+        ch=t;
+        reverserecursion(ch);
+        
+  
+   
+    
+}
 
 void printReverse(){
     struct Node* t=head;
