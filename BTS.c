@@ -50,13 +50,31 @@ bool search(struct Node* root,int data){
         return search(root->left,data);
     }
 }
+int findmin(struct Node* root){
+    if(root->left==NULL){
+        return root->data;
+    }
+    findmin(root->left);
+}
+int findmax(struct Node* root){
+    if(root->right==NULL){
+        return root->data;
+    }
+    findmax(root->right);
+}
 int main()
 {
     
     root =NULL;
+    root=insert(root,15);
+    root=insert(root,10);
+    root=insert(root,20);
+    root=insert(root,8);
     root=insert(root,12);
     root=insert(root,17);
-    root=insert(root,10);
+    root=insert(root,25);
+
+
     bool a=search(root,10);
     if(a){
         printf("yes");
@@ -65,7 +83,8 @@ int main()
         printf("no");
     }
     
-    
+    int m=findmax(root);
+    printf("%d",m);
 
     return 0;
 }
