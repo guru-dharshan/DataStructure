@@ -34,6 +34,14 @@ struct Node* insert(struct Node* root,int data){
     }
     return root;
 }
+void inorder(struct Node* root){
+    if(root==NULL){
+        return;
+    }
+    inorder(root->left);
+    printf("%d\n",root->data);
+    inorder(root->right);
+}
 
 bool search(struct Node* root,int data){
     if(root ==NULL){
@@ -61,6 +69,25 @@ int findmax(struct Node* root){
         return root->data;
     }
     findmax(root->right);
+}
+void delete(struct Node* root,int data){
+    struct Node* d = search(root,data);
+    if(d->left==NULL && d->right==NULL){
+        free(d);
+        d=NULL;
+        
+    }
+    else if(d->left==NULL){
+        d=d->right;
+    }
+    else if(d->right==NULL){
+        d=d->left;
+    }
+    else{
+        int m=findmin(d->right);
+        delete(d,m);
+    }
+   
 }
 int main()
 {
